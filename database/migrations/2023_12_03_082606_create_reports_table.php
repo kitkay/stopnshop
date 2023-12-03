@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('sale_serial', 50)
-                ->unique()
+                // ->unique()
                 ->foreignId('sale_serial')->constrained(
                     'sales',
                     'serial'

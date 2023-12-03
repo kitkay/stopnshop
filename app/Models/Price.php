@@ -10,6 +10,8 @@ class Price extends Model
     use HasFactory;
 
     protected $fillable = [
-        'capital', 'markup', 'discount'
+        'capital',
+        'markup',
+        'discount'
     ];
 }

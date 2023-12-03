@@ -4,12 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Sale extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'serial', 'product_id', 'quantity', 'amount'
+        'id',
+        'serial',
+        'product_id',
+        'quantity',
+        'amount'
     ];
+
+    /**
+     * products - get related products
+     *
+     * @return HasMany
+     */
+    public function products(): HasMany
+    {
+        return $this->hasMany(
+            Product::class,
+            'id',
+            'product_id'
+        );
+    }
 }
