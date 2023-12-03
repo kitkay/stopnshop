@@ -1,12 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
-import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+
+import StopShopLogo from '@/ShopComponents/Stopshop.vue';
 
 defineProps({
     title: String,
@@ -40,10 +41,13 @@ const logout = () => {
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
+                            <div class="shrink-0 flex flex-row my-3 items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationMark class="block h-9 w-auto" />
+
+                                    <!-- <ApplicationLogo class="block h-9 w-auto" /> -->
+                                    <StopShopLogo class="block h-9 w-auto"></StopShopLogo>
                                 </Link>
+                                <span class=" ml-2">Store Management System</span>
                             </div>
 
                             <!-- Navigation Links -->
@@ -123,6 +127,8 @@ const logout = () => {
 
                                         <span v-else class="inline-flex rounded-md">
                                             <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
+                                                <!-- Welcome name -->
+                                                <span class="mr-1 font-bold">Welcome!</span>
                                                 {{ $page.props.auth.user.name }}
 
                                                 <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -275,7 +281,7 @@ const logout = () => {
 
             <!-- Page Heading -->
             <header v-if="$slots.header" class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-9xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-9xl mx-auto py-1 px-4 sm:px-6 lg:px-9 flex justify-end">
                     <slot name="header" />
                 </div>
             </header>
