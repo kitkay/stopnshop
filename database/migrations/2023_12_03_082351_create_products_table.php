@@ -27,7 +27,7 @@ return new class extends Migration
             );
             $table->string('sku', 15);
             $table->string('productName', 15)->unique();
-            $table->text('decription');
+            $table->text('description');
             $table->string('unit', 10);
             $table->integer('quantity');
             $table->timestamps();
