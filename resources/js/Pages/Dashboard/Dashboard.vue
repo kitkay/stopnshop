@@ -1,8 +1,23 @@
+<script>
+import DashboardProjects from './DashboardProjects.vue';
+
+export default {
+    components: {
+        DashboardProjects
+    },
+    data() {
+        return {
+            checkauth: this.$page.props.checkauth,
+            products: this.$page.props.products
+        }
+    }
+}
+</script>
+
 <template>
     <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-xl sm:rounded-lg p-3">
-
         <div class="flex items-center">
-            <h2 class="text-xl font-bold">Dashboard</h2>
+            <h2 class="text-xl font-bold">Dashboard </h2>
         </div>
 
         <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
@@ -11,7 +26,7 @@
                     Total users
                 </div>
                 <div class="mt-1 text-3xl font-semibold text-gray-900">
-                    12,00
+                    1200
                 </div>
             </div>
             <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
@@ -28,6 +43,15 @@
                 </div>
                 <div class="mt-1 text-3xl font-semibold text-gray-900">
                     20k
+                </div>
+            </div>
+            <div v-for="product in products" :key="product.id" >
+                <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
+                    <DashboardProjects
+                        :id = 'product.id'
+                        :productname = "product.productName"
+                    >
+                    </DashboardProjects>
                 </div>
             </div>
         </div>

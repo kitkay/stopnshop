@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -14,7 +15,12 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $this->checkAuth('Dashboard');
+        $params = [
+            'checkauth' => Auth::check(),
+            'products' => Product::latest()->get()
+        ];
+
+        return $this->checkAuth('Dashboard', $params);
     }
 
     /**
@@ -24,7 +30,7 @@ class DashboardController extends Controller
      */
     public function products()
     {
-        $this->checkAuth('Products/Products');
+        return $this->checkAuth('Products/Products');
     }
 
     /**
@@ -34,7 +40,7 @@ class DashboardController extends Controller
      */
     public function reports()
     {
-        $this->checkAuth('Reports/Reports');
+        return $this->checkAuth('Reports/Reports');
     }
 
     /**
@@ -44,7 +50,7 @@ class DashboardController extends Controller
      */
     public function sales()
     {
-        $this->checkAuth('Sales/Sales');
+        return $this->checkAuth('Sales/Sales');
     }
 
     /**
@@ -54,21 +60,22 @@ class DashboardController extends Controller
      */
     public function staffs()
     {
-        $this->checkAuth('Staffs/Staffs');
+        return $this->checkAuth('Staffs/Staffs');
     }
 
     /**
      * Check if user is authenticated
      *
      * @param string $page
+     * @param ?array $params
      *
      * @return void
      */
-    public function checkAuth(string $page)
+    public function checkAuth(string $page, ?array $params = [])
     {
         if (!Auth::check()) {
             return redirect('/');
         }
-        return Inertia::render($page);
+        return Inertia::render($page, $params);
     }
 }
