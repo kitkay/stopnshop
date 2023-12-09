@@ -1,10 +1,8 @@
-<script>
+<script setup>
 import DashboardProjects from './DashboardProjects.vue';
-
+</script>
+<script>
 export default {
-    components: {
-        DashboardProjects
-    },
     data() {
         return {
             checkauth: this.$page.props.checkauth,
