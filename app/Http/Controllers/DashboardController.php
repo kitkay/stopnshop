@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -15,9 +16,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
+        $products = Product::with('category')->get();
         $params = [
             'checkauth' => Auth::check(),
-            'products' => Product::latest()->get()
+            'products' => $products,
         ];
 
         return $this->checkAuth('Dashboard', $params);

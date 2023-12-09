@@ -49,7 +49,10 @@ export default {
                 <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
                     <DashboardProjects
                         :id = 'product.id'
-                        :productname = "product.productName"
+                        :productname = 'product.productName'
+                        :sku = 'product.sku'
+                        :desp = 'product.description'
+                        :category = 'product.category.catName'
                     >
                     </DashboardProjects>
                 </div>

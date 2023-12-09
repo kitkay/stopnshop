@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -14,12 +14,17 @@ class Category extends Model
         'catName'
     ];
 
-    public function products(): BelongsTo
+    /**
+     * Get products category
+     *
+     * @return HasMany
+     */
+    public function products(): HasMany
     {
-        return $this->belongsTo(
+        return $this->hasMany(
             Product::class,
-            'id',
-            'category_id'
+            'category_id',
+            'id'
         );
     }
 }
