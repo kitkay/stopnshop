@@ -5,11 +5,11 @@ import { Link } from '@inertiajs/vue3';
 
 <template>
     <div class="flex bg-white dark:bg-gray-900 overflow-hidden shadow-xl sm:rounded-lg px-3 py-1">
-        <div class="flex flex-col h-screen">
+        <div class="flex flex-col">
             <div class="space-y-1">
                 <div class="flex-1">
 
-                    <ul class="pt-2 pb-4 space-y-1 text-sm">
+                    <ul class="pt-2 pb-4 space-y-1 text-1xl">
                         <li class="rounded-sm">
                             <Link :href="route('dashboard')" class="flex items-center p-2 space-x-3 rounded-md">
                                 <svg

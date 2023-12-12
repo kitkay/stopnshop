@@ -1,7 +1,17 @@
 <script setup>
 
 import AppLayout from "@/Layouts/AppLayout.vue";
+import ProductCard from "@/Pages/Products/ProductCard.vue";
 
+</script>
+<script>
+export default {
+    data() {
+        return {
+            products: this.$page.props.products,
+        }
+    }
+}
 </script>
 
 <template>
@@ -16,9 +26,19 @@ import AppLayout from "@/Layouts/AppLayout.vue";
         <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-xl sm:rounded-lg p-3">
 
             <div class="flex items-center">
-                <h2 class="text-xl font-bold px-3 pt-1 pb-3">Products</h2>
+                <span class="contentTitle">Products</span>
             </div>
 
+            <div class="productcontainer">
+                <div v-for="product in products" :key="product.id" >
+                    <ProductCard
+                        :id = 'product.id'
+                        :productname = 'product.productName'
+                        :sku = 'product.sku'
+                        :category = 'product.category.catName'
+                    />
+                </div>
+             </div>
         </div>
     </AppLayout>
 

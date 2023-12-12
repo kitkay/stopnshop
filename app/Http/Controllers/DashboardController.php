@@ -17,9 +17,11 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $products = Product::with('category')->get();
+        $totalProducts = $products->count();
         $params = [
             'checkauth' => Auth::check(),
             'products' => $products,
+            'totalProducts' => $totalProducts
         ];
 
         return $this->checkAuth('Dashboard', $params);
@@ -32,7 +34,11 @@ class DashboardController extends Controller
      */
     public function products()
     {
-        return $this->checkAuth('Products/Products');
+        $products = Product::with('category')->get();
+        $params = [
+            'products' => $products,
+        ];
+        return $this->checkAuth('Products/Products', $params);
     }
 
     /**

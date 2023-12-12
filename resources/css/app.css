@@ -5,3 +5,57 @@
 [x-cloak] {
     display: none;
 }
+
+@layer components {
+    /** Content Global */
+    .contentTitle {
+        @apply text-xl font-bold px-3 pt-1 pb-3;
+    }
+
+
+    /** Button settings */
+    .btn-view {
+        @apply bg-green-500 text-white text-sm px-3 py-1 mx-1 rounded uppercase;
+    }
+    .btn-edit {
+        @apply bg-yellow-400 text-black text-sm px-3 py-1  mx-1 rounded uppercase;
+    }
+    .btn-delete {
+        @apply bg-red-500 text-white text-sm px-3 py-1 mx-1 rounded uppercase;
+    }
+    /** End of Button settings */
+
+    /** Card settings */
+    .card-container {
+        @apply flex flex-col text-center text-blue-50 justify-evenly w-full px-4 py-5 rounded-lg shadow;
+    }
+
+    .card-title {
+        @apply text-2xl mr-3 mb-3;
+    }
+
+    .card-value {
+        @apply text-5xl font-bold;
+    }
+
+    .productscard {
+        @apply bg-green-600;
+    }
+    .reportscard {
+        @apply bg-yellow-400 text-blue-900;
+    }
+    .salescard {
+        @apply bg-orange-600;
+    }
+    .staffcard {
+        @apply bg-blue-600;
+    }
+    /** End of Card Settings */
+
+    /** Products Card Setting*/
+    .productcontainer {
+        @apply grid grid-cols-1 mb-5 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2;
+    }
+
+    /** End of Products Card Settings */
+}

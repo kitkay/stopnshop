@@ -350,10 +350,10 @@ const logout = () => {
             <!-- Page Content -->
             <main>
                 <div class="pb-12 pt-2 grid grid-cols-12">
-                    <div class="px-1 my-1 col-span-12 lg:col-span-2 md:col-span-12 sm:col-span-12">
+                    <div class="px-1 my-1 col-span-12 lg:col-span-2 md:col-span-3 sm:col-span-12">
                         <SideBar/>
                     </div>
-                    <div class="px-1 my-1 col-span-12 lg:col-span-10 md:col-span-12 sm:col-span-12">
+                    <div class="px-1 my-1 col-span-12 lg:col-span-10 md:col-span-9 sm:col-span-12">
                         <slot />
                     </div>
                 </div>
