@@ -1,5 +1,4 @@
 <script setup>
-import DashboardProjects from './DashboardProjects.vue';
 import Shopcard from '../../ShopComponents/Shopcard.vue';
 
 </script>
@@ -22,7 +21,7 @@ export default {
         </div>
 
         <!-- Cards -->
-        <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-4">
+        <div class="grid grid-cols-1 gap-5 mb-6 lg:grid-cols-4">
             <Shopcard
                 class="productscard"
                 cardtitle = 'Products'
@@ -46,19 +45,8 @@ export default {
         </div>
 
         <!-- Dashboard Charts -->
-        <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-5">
-            <div v-for="product in products" :key="product.id" >
-                <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
-                    <DashboardProjects
-                        :id = 'product.id'
-                        :productname = 'product.productName'
-                        :sku = 'product.sku'
-                        :desp = 'product.description'
-                        :category = 'product.category.catName'
-                    >
-                    </DashboardProjects>
-                </div>
-            </div>
+        <div class="grid grid-cols-1 gap-5 mb-6">
+            Charts here
         </div>
 
     </div>

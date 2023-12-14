@@ -12,16 +12,9 @@
         @apply text-xl font-bold px-3 pt-1 pb-3;
     }
 
-
     /** Button settings */
-    .btn-view {
-        @apply bg-green-500 text-white text-sm px-3 py-1 mx-1 rounded uppercase;
-    }
-    .btn-edit {
-        @apply bg-yellow-400 text-black text-sm px-3 py-1  mx-1 rounded uppercase;
-    }
-    .btn-delete {
-        @apply bg-red-500 text-white text-sm px-3 py-1 mx-1 rounded uppercase;
+    .btn-view, .btn-edit, .btn-delete {
+        @apply flex justify-center items-center text-sm rounded capitalize;
     }
     /** End of Button settings */
 

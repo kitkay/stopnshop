@@ -1,4 +1,6 @@
 <script setup>
+import 'boxIcons'
+
 defineProps({
     'id': {
         type: Number,
@@ -25,17 +27,38 @@ defineProps({
 </script>
 <template>
     <div class="flex flex-col border p-3 m-3">
-        <span class="font-extrabold py-1">{{ id }} : {{ sku }}</span>
+        <span class="flex flex-row justify-between font-extrabold text-right uppercase">
+            <span class="font-extrabold py-1">{{ id }} : {{ sku }}</span>
+            <span class="font-extrabold py-1">{{ category }}</span>
+        </span>
+
         <div class="text-start">
-            <figure>
+            <figure class="uppercase my-1">
                 <!-- <img src="pic_trulli.jpg" alt="Trulli" style="width:100%"> -->
                 <figcaption>{{ productname }}</figcaption>
             </figure>
         </div>
-        <span class="font-extrabold text-center py-3">{{ category }}</span>
-        <div class="flex flex-row justify-end">
-            <button class="btn-edit">Edit</button>
-            <button class="btn-delete">Delete</button>
+        <div class="flex flex-row justify-end mt-3">
+            <button class="btn-edit" title="Edit">
+                <box-icon
+                    type='solid'
+                    name='edit'
+                    size='sm'
+                    color='green'
+                    animation= 'tada-hover'
+                ></box-icon>
+                <span class="mx-1 mt-1">edit</span>
+            </button>
+            <button class="btn-delete" title="Delete">
+                <box-icon
+                    type='regular'
+                    name='trash'
+                    size='sm'
+                    color='red'
+                    animation= 'tada-hover'
+                ></box-icon>
+                <span class="mx-1 mt-1">delete</span>
+            </button>
         </div>
     </div>
 </template>
