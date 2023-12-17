@@ -1,5 +1,4 @@
 <script setup>
-
 import AppLayout from "@/Layouts/AppLayout.vue";
 import ProductCard from "@/Pages/Products/ProductCard.vue";
 

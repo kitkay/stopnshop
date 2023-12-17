@@ -1,6 +1,5 @@
 <script setup>
-import 'boxIcons'
-
+import 'boxicons';
 defineProps({
     'id': {
         type: Number,
@@ -21,7 +20,7 @@ defineProps({
     'category': {
         type: String,
         required: true
-    }
+    },
 });
 
 </script>
@@ -39,25 +38,25 @@ defineProps({
             </figure>
         </div>
         <div class="flex flex-row justify-end mt-3">
-            <button class="btn-edit" title="Edit">
+            <button class="btn-edit" title="edit">
                 <box-icon
-                    type='solid'
-                    name='edit'
-                    size='sm'
-                    color='green'
+                    type = 'solid'
+                    name = 'edit'
+                    size = 'sm'
+                    color = 'green'
                     animation= 'tada-hover'
                 ></box-icon>
-                <span class="mx-1 mt-1">edit</span>
+                <span class="mx-1 mt-1 capitalize">edit</span>
             </button>
-            <button class="btn-delete" title="Delete">
+            <button class="btn-delete" title="delete">
                 <box-icon
-                    type='regular'
-                    name='trash'
-                    size='sm'
-                    color='red'
+                    type = 'solid'
+                    name = 'trash'
+                    size = 'sm'
+                    color = 'red'
                     animation= 'tada-hover'
                 ></box-icon>
-                <span class="mx-1 mt-1">delete</span>
+                <span class="mx-1 mt-1 capitalize">delete</span>
             </button>
         </div>
     </div>
