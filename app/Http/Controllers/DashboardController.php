@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -84,6 +83,7 @@ class DashboardController extends Controller
         if (!Auth::check()) {
             return redirect('/');
         }
+
         return Inertia::render($page, $params);
     }
 }

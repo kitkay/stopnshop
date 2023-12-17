@@ -14,7 +14,16 @@
 
     /** Button settings */
     .btn-view, .btn-edit, .btn-delete {
-        @apply flex justify-center items-center text-sm rounded capitalize;
+        @apply flex justify-center items-center text-sm border ml-1 px-3 py-1 rounded capitalize;
+    }
+    .btn-edit {
+        @apply border-green-400 hover:bg-green-400 hover:text-white;
+    }
+    .btn-view {
+        @apply border-blue-400 hover:bg-blue-400 hover:text-white;
+    }
+    .btn-delete {
+        @apply border-red-400 hover:bg-red-400 hover:text-white;
     }
     /** End of Button settings */
 

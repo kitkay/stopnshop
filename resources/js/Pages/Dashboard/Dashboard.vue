@@ -1,5 +1,6 @@
 <script setup>
-import Shopcard from '../../ShopComponents/Shopcard.vue';
+// import LineChart from '@/ShopComponents/Charts/LineChart.vue';
+import Shopcard from '@/ShopComponents/Shopcard.vue';
 
 </script>
 <script>
@@ -13,7 +14,6 @@ export default {
     }
 }
 </script>
-
 <template>
     <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-xl sm:rounded-lg p-3">
         <div class="flex items-center">
@@ -46,7 +46,7 @@ export default {
 
         <!-- Dashboard Charts -->
         <div class="grid grid-cols-1 gap-5 mb-6">
-            Charts here
+            <!-- <LineChart id="maincharts" /> -->
         </div>
 
     </div>
