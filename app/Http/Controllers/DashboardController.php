@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Report;
+use App\Models\Sale;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -17,10 +20,16 @@ class DashboardController extends Controller
     {
         $products = Product::with('category')->get();
         $totalProducts = $products->count();
+        $totalSales = count(Sale::with('products')->get());
+        $totalReports = count(Report::with('sales')->get());
+        $totalUsers = count(User::all());
         $params = [
             'checkauth' => Auth::check(),
             'products' => $products,
-            'totalProducts' => $totalProducts
+            'totalProducts' => $totalProducts,
+            'totalSales' => $totalSales,
+            'totalReports' => $totalReports,
+            'totalUsers' => $totalUsers
         ];
 
         return $this->checkAuth('Dashboard', $params);

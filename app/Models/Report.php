@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Report extends Model
 {
@@ -16,4 +17,18 @@ class Report extends Model
         'description',
         'totalSales'
     ];
+
+    /**
+     * sales - get related sales
+     *
+     * @return HasMany
+     */
+    public function sales(): HasMany
+    {
+        return $this->hasMany(
+            Sale::class,
+            'serial',
+            'sale_serial'
+        );
+    }
 }

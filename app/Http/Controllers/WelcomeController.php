@@ -17,8 +17,8 @@ class WelcomeController extends Controller
 
         if (Auth::check()) {
             return redirect('dashboard');
-        } else {
-            return Inertia::render('Welcome', $params);
         }
+
+        return Inertia::render('Welcome', $params);
     }
 }
