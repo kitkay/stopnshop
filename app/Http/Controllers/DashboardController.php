@@ -9,6 +9,7 @@ use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Ramsey\Uuid\Type\Integer;
 
 class DashboardController extends Controller
 {
@@ -28,22 +29,20 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $products = $this->product::with('category')->get();
-        $totalProducts = $products->count();
+        $totalProducts = $this->product::with('category')->get()->count();
         $totalSales = count(Sale::with('products')->get());
         $totalReports = count(Report::with('sales')->get());
         $totalUsers = count(User::all());
 
         $params = [
             'checkauth' => Auth::check(),
-            'products' => $products,
             'totalProducts' => $totalProducts,
             'totalSales' => $totalSales,
             'totalReports' => $totalReports,
             'totalUsers' => $totalUsers
         ];
 
-        return $this->checkAuth('Dashboard', $params);
+        return checkAuth('Dashboard', $params);
     }
 
     /**
@@ -56,7 +55,7 @@ class DashboardController extends Controller
 
         $params = [];
 
-        return $this->checkAuth('Inventory/Inventory', $params);
+        return checkAuth('Inventory/Inventory', $params);
     }
 
     /**
@@ -66,13 +65,6 @@ class DashboardController extends Controller
      */
     public function products()
     {
-        $products = $this->product::with('category')->get();
-
-        $params = [
-            'products' => $products
-        ];
-
-        return $this->checkAuth('Products/Products', $params);
     }
 
     /**
@@ -82,7 +74,7 @@ class DashboardController extends Controller
      */
     public function reports()
     {
-        return $this->checkAuth('Reports/Reports');
+        return checkAuth('Reports/Reports');
     }
 
     /**
@@ -92,7 +84,7 @@ class DashboardController extends Controller
      */
     public function sales()
     {
-        return $this->checkAuth('Sales/Sales');
+        return checkAuth('Sales/Sales');
     }
 
     /**
@@ -102,27 +94,6 @@ class DashboardController extends Controller
      */
     public function staffs()
     {
-        return $this->checkAuth('Staffs/Staffs');
-    }
-
-    /**
-     * Check if user is authenticated
-     *
-     * @param string $page
-     * @param ?array $params
-     *
-     * @return void
-     */
-    public function checkAuth(string $page, ?array $params = [])
-    {
-        if (!Auth::check()) {
-            return redirect('/');
-        }
-
-        try {
-            return Inertia::render($page, $params);
-        } catch (Exception $ex) {
-            return $ex;
-        }
+        return checkAuth('Staffs/Staffs');
     }
 }
