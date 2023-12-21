@@ -15,11 +15,11 @@ defineProps({
     },
     'desp': {
         type: String,
-        // required: true
+        required: false
     },
     'category': {
         type: String,
-        required: true
+        required: false
     },
 });
 

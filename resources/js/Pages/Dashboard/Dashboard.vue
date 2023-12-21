@@ -1,7 +1,6 @@
 <script setup>
-import LineChart from '@/ShopComponents/Charts/LineChart.vue';
+// import LineChart from '@/ShopComponents/Charts/LineChart.vue';
 import Shopcard from '@/ShopComponents/Shopcard.vue';
-import 'boxicons';
 
 </script>
 <script>
@@ -9,7 +8,6 @@ export default {
     data() {
         return {
             checkauth: this.$page.props.checkauth,
-            products: this.$page.props.products,
             totalProducts: this.$page.props.totalProducts,
             totalSales: this.$page.props.totalSales,
             totalReports: this.$page.props.totalReports,
@@ -50,7 +48,7 @@ export default {
 
         <!-- Dashboard Charts -->
         <div class="grid grid-cols-1 gap-5 mb-6">
-            <LineChart id="maincharts" />
+
         </div>
 
     </div>

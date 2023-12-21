@@ -12,17 +12,27 @@ use Inertia\Inertia;
 class DashboardController extends Controller
 {
     /**
+     * Sturcture  DashboardController injections
+     *
+     * @param Product $product
+     */
+    public function __construct(public Product $product)
+    {
+    }
+
+    /**
      * Render Dashboard Page
      *
      * @return void
      */
     public function dashboard()
     {
-        $products = Product::with('category')->get();
+        $products = $this->product::with('category')->get();
         $totalProducts = $products->count();
         $totalSales = count(Sale::with('products')->get());
         $totalReports = count(Report::with('sales')->get());
         $totalUsers = count(User::all());
+
         $params = [
             'checkauth' => Auth::check(),
             'products' => $products,
@@ -42,10 +52,12 @@ class DashboardController extends Controller
      */
     public function products()
     {
-        $products = Product::with('category')->get();
+        $products = $this->product::with('category')->get();
+
         $params = [
-            'products' => $products,
+            'products' => $products
         ];
+
         return $this->checkAuth('Products/Products', $params);
     }
 

@@ -18,6 +18,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     ->group(function () {
         Route::controller(DashboardController::class)->group(function () {
             Route::get('/', 'dashboard')->name('dashboard');
+            Route::get('/inventory', 'inventory')->name('inventory');
             Route::get('/products', 'products')->name('products');
             Route::get('/reports', 'reports')->name('reports');
             Route::get('/sales', 'sales')->name('sales');
