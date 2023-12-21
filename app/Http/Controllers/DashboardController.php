@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Report;
 use App\Models\Sale;
 use App\Models\User;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -43,6 +44,19 @@ class DashboardController extends Controller
         ];
 
         return $this->checkAuth('Dashboard', $params);
+    }
+
+    /**
+     * Render Inventory Page
+     *
+     * @return void
+     */
+    public function inventory()
+    {
+
+        $params = [];
+
+        return $this->checkAuth('Inventory/Inventory', $params);
     }
 
     /**
@@ -105,6 +119,10 @@ class DashboardController extends Controller
             return redirect('/');
         }
 
-        return Inertia::render($page, $params);
+        try {
+            return Inertia::render($page, $params);
+        } catch (Exception $ex) {
+            return $ex;
+        }
     }
 }

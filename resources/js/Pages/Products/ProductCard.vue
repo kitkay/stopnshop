@@ -40,7 +40,7 @@ defineProps({
         <div class="flex flex-row justify-end mt-3">
             <button class="btn-edit" title="edit">
                 <box-icon
-                    type = 'solid'
+                    type = 'regular'
                     name = 'edit'
                     size = 'sm'
                     color = 'green'
@@ -50,7 +50,7 @@ defineProps({
             </button>
             <button class="btn-delete" title="delete">
                 <box-icon
-                    type = 'solid'
+                    type = 'regular'
                     name = 'trash'
                     size = 'sm'
                     color = 'red'
