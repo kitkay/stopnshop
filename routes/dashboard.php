@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProducController;
 
 /*
@@ -30,5 +31,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         //Products page routes
         Route::controller(ProducController::class)->group(function () {
             Route::get('/products', 'index')->name('products');
+        });
+
+        //Inventory page routes
+        Route::controller(InventoryController::class)->group(function () {
+            Route::get('/inventory', 'index')->name('inventory');
         });
     });

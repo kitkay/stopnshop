@@ -14,7 +14,7 @@
 
     /** Button settings */
     .btn-view, .btn-edit, .btn-delete {
-        @apply flex justify-center items-center text-sm border ml-1 px-3 py-1 rounded capitalize;
+        @apply flex justify-center items-center text-sm border ml-1 px-3 py-1 rounded capitalize bg-white;
     }
     .btn-edit {
         @apply border-green-400 hover:shadow-green-600 hover:shadow-lg hover:text-green-600 hover:font-extrabold;
@@ -60,4 +60,9 @@
     }
 
     /** End of Products Card Settings */
+
+    /** Custom Table settings */
+    .row-container {
+        @apply flex lg:flex-row md:flex-col col-span-4 w-full;
+    }
 }

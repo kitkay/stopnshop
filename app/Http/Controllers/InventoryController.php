@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
+use App\Models\Product;
 
 class InventoryController extends Controller
 {
@@ -12,7 +13,11 @@ class InventoryController extends Controller
 
     public function index()
     {
-        $params = [];
+        $products = Product::all();
+
+        $params = [
+            'products' => $products
+        ];
         return checkAuth('Inventory/Inventory', $params);
     }
 }
