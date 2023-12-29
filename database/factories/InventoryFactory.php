@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Inventory>
  */
-class ProductFactory extends Factory
+class InventoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,13 +18,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => DB::table('categories')->inRandomOrder()->value('id'),
+            'product_id' => DB::table('products')->inRandomOrder()->value('id'),
+            'price_id' => DB::table('prices')->inRandomOrder()->value('id'),
             'staff_id' => DB::table('users')->inRandomOrder()->value('id'),
-            'sku' => fake()->regexify('[A-Z]{3}[0-4]{2}'),
-            'productName' => fake()->word(),
             'description' => fake()->sentence(),
-            'unit' => fake()->randomElement(['pc', 'box']),
-            'quantity' => fake()->randomDigit()
         ];
     }
 }

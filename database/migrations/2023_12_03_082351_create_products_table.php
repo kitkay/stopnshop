@@ -21,10 +21,6 @@ return new class extends Migration
                 'users',
                 'id'
             );
-            $table->foreignId('price_id')->constrained(
-                'prices',
-                'id'
-            );
             $table->string('sku', 15);
             $table->string('productName', 15);
             $table->text('description');

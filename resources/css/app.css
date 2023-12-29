@@ -62,7 +62,45 @@
     /** End of Products Card Settings */
 
     /** Custom Table settings */
-    .row-container {
-        @apply flex lg:flex-row md:flex-col col-span-4 w-full;
+    .table-container {
+        @apply col-span-1 flex flex-col mt-10 cursor-pointer;
     }
+
+    .row-header-container {
+        @apply flex flex-row col-span-4 w-full py-1.5 rounded bg-green-900 text-white;
+    }
+
+    .col-header-small {
+        @apply col-span-1 text-center w-1/6 p-1 font-extrabold uppercase;
+    }
+
+    .col-header-full {
+        @apply col-span-1 text-center w-full p-1 font-extrabold uppercase;
+    }
+
+    .col-header-actions {
+        @apply flex flex-row col-span-1 p-1 w-1/6;
+    }
+
+    .row-content-container {
+        @apply flex flex-row col-span-4 w-full border-b-2 last:border-none even:bg-green-50 hover:uppercase hover:font-extrabold;
+    }
+
+    .col-content-small {
+        @apply col-span-1 text-center w-1/6 py-1;
+    }
+
+    .col-content-full {
+        @apply col-span-1 text-start w-full py-1;
+    }
+
+    .col-actions {
+        @apply flex flex-row col-span-1 p-1 w-1/6;
+    }
+
+    .col-checkbox {
+        @apply m-1 ml-2 rounded;
+    }
+
+    /** End of custom table */
 }

@@ -4,7 +4,8 @@ import 'boxicons';
 
 defineProps({
     products: {
-        type: Object
+        type: Object,
+        required: true
     }
 })
 </script>
@@ -24,18 +25,22 @@ defineProps({
                 <span class="contentTitle">Inventory</span>
             </div>
 
-            <div class="col-span-1 flex flex-col mt-10">
-                <span class="row-container">
-                    <span class="col-span-1 text-center w-1/6 p-1 font-extrabold uppercase">Product Name</span>
-                    <span class="col-span-1 text-center w-1/6 p-1 font-extrabold uppercase">SKU</span>
-                    <span class="col-span-1 text-center w-full p-1 font-extrabold uppercase">Description</span>
-                    <span class="col-span-1 w-1/6"></span>
+            <div class="table-container">
+                <span class="row-header-container">
+                    <span class="col-checkbox"><input type="checkbox" /></span>
+                    <span class="col-header-small">Product</span>
+                    <span class="col-header-small">SKU</span>
+                    <span class="col-header-small">UNIT</span>
+                    <span class="col-header-full">Description</span>
+                    <span class="col-header-actions"></span>
                 </span>
-                <span v-for="product in products" :key="product.id" class="row-container even:bg-green-50 odd:bg-red-50">
-                    <span class="col-span-1 outline outline-1 text-center md:w-1/6 p-1">{{ product.productName }}</span>
-                    <span class="col-span-1 outline outline-1 text-center md:w-1/6 p-1">{{ product.sku }}</span>
-                    <span class="col-span-1 outline outline-1 text-start w-full p-1">{{ product.description }}</span>
-                    <span class="flex md:flex-row xs:flex-col col-span-1 outline outline-1 p-1">
+                <span v-for="product in products" :key="product.id" class="row-content-container">
+                    <span class="col-checkbox"><input type="checkbox" /></span>
+                    <span class="col-content-small">{{ product.productName }}</span>
+                    <span class="col-content-small">{{ product.sku }}</span>
+                    <span class="col-content-small">{{ product.unit }}</span>
+                    <span class="col-content-full">{{ product.description }}</span>
+                    <span class="col-actions">
                         <button class="btn-edit" title="edit">
                             <box-icon
                                 type = 'regular'
@@ -58,6 +63,7 @@ defineProps({
                         </button>
                     </span>
                 </span>
+
             </div>
         </div>
     </AppLayout>

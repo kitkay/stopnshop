@@ -20,7 +20,7 @@ class SaleFactory extends Factory
         return [
             'id' => fake()->uuid(),
             'serial' => fake()->bothify('##???##???'),
-            'product_id' => DB::table('products')->inRandomOrder()->value('id'),
+            'inventory_id' => DB::table('inventories')->inRandomOrder()->value('id'),
             'quantity' => fake()->randomDigit(),
             'amount' => fake()->randomFloat(2, 10, 50)
         ];
