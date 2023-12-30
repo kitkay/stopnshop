@@ -9,6 +9,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 import StopShopLogo from '@/ShopComponents/Stopshop.vue';
 import SideBar from "@/ShopComponents/SideBar.vue";
+import Softwarename from '@/ShopComponents/Softwarename.vue';
 
 defineProps({
     title: String,
@@ -48,7 +49,7 @@ const logout = () => {
                                     <!-- <ApplicationLogo class="block h-9 w-auto" /> -->
                                     <StopShopLogo class="block h-9 w-auto"></StopShopLogo>
                                 </Link>
-                                <span class=" ml-2">Store Management System</span>
+                                <Softwarename/>
                             </div>
 
                             <!-- Navigation Links -->
