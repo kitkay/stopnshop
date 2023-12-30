@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\InventoryPostRequest;
+use App\Models\Inventory;
 use App\Models\Product;
 
 class InventoryController extends Controller
@@ -10,7 +11,7 @@ class InventoryController extends Controller
     /**
      * Inventory Controller creation
      */
-    public function __construct()
+    public function __construct(public Product $product)
     {
     }
 
@@ -21,7 +22,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $products = Product::where('deleted_at', null)
+        $products = $this->product::where('deleted_at', null)
             ->orderBy('unit')
             ->orderBy('productName', 'ASC')
             ->get();
@@ -40,6 +41,11 @@ class InventoryController extends Controller
      */
     public function store(InventoryPostRequest $request)
     {
-        $data = $request->validated();
+        if ($request->isMethod('post') === $request->method() && $request->valiadted()) {
+            Inventory::create($request->validated());
+
+            return redirect('inventory')
+                ->with('status', 'New product has been added to our inventory.');
+        }
     }
 }

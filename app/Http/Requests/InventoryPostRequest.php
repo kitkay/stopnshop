@@ -22,10 +22,10 @@ class InventoryPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'productname' => 'required|min:4|max:100',
+            'product_id' => 'required|exists:App\Models\Product,id',
+            'price_id' => 'required|exists:App\Models\Price,id',
+            'staff_id' => 'required|exists:App\Models\User,id',
             'description' => 'required|max:200',
-            'sku' => 'required|min:4|max:100',
-            'unit' => 'required|min:3',
         ];
     }
 }

@@ -11,24 +11,26 @@ class Sale extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'serial',
-        'product_id',
+        'inventory_id',
         'quantity',
         'amount'
     ];
 
     /**
-     * products - get related products
+     * inventories - This sales has many inventories on it
+     * which simply means a single sale serial or entry has
+     * many inventories on it since one inventory has also
+     * alot of products listed in a single inventory id or code
      *
      * @return HasMany
      */
-    public function products(): HasMany
+    public function inventories(): HasMany
     {
         return $this->hasMany(
-            Product::class,
+            Inventory::class,
             'id',
-            'product_id'
+            'inventory_id'
         );
     }
 }
