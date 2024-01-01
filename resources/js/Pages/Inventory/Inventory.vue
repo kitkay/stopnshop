@@ -2,6 +2,8 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import 'boxicons';
 
+import InventoryMenu from  '@/Pages/Inventory/Components/Menu.vue';
+
 defineProps({
     products: {
         type: Object,
@@ -24,6 +26,8 @@ defineProps({
             <div class="flex items-center">
                 <span class="contentTitle">Inventory</span>
             </div>
+
+            <InventoryMenu />
 
             <div class="table-container">
                 <span class="row-header-container">
@@ -69,11 +73,3 @@ defineProps({
     </AppLayout>
 
 </template>
-
-<style>
-th, td {
-    border: 1px solid #000;
-    text-align: center;
-    padding: 3px 25px;
-}
-</style>

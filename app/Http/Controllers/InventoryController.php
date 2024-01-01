@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventoryPostRequest;
 use App\Models\Inventory;
 use App\Models\Product;
+use Inertia\Inertia;
 
 class InventoryController extends Controller
 {
@@ -32,6 +33,11 @@ class InventoryController extends Controller
         ];
 
         return checkAuth('Inventory/Inventory', $params);
+    }
+
+    public function addInventory()
+    {
+        return checkAuth('Inventory/AddInventory', []);
     }
 
     /**

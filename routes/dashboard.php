@@ -36,5 +36,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         //Inventory page routes
         Route::controller(InventoryController::class)->group(function () {
             Route::get('/inventory', 'index')->name('inventory');
+            Route::get('/create-inventory', 'addInventory')->name('add-inventory');
         });
     });

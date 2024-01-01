@@ -15,7 +15,6 @@ defineProps({
 <template>
     <div class="card-container">
         <span class="card-title flex flex-row m-0">
-            <slot />
             {{ cardtitle }}
         </span>
         <span class="card-value">
