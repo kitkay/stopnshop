@@ -1,21 +1,22 @@
+<script setup>
+import { Link } from '@inertiajs/vue3';
 
-import TextInput from '@/Components/TextInput.vue';
+</script>
+
 <template>
     <div class="page-menu">
-        <span>
-            <label>Search</label>
-            <TextInput />
-        </span>
 
-        <button class="btn-view">
+        <span></span>
+
+        <Link :href="route('add-inventory')" class="btn-view">
             <box-icon
                 type = 'regular'
                 name = 'plus'
                 size = 'sm'
                 color = 'green'
                 animation= 'tada-hover'
-            ></box-icon> Add
-        </button>
+            ></box-icon> New Inventory
+        </Link>
 
     </div>
 </template>

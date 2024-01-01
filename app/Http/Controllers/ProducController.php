@@ -13,8 +13,8 @@ class ProducController extends Controller
     public function index()
     {
         $products = $this->product::with('category')
-            ->limit(12)
-            ->offset(2)
+            ->limit(10)
+            ->offset(0)
             ->get();
 
         $params = [

@@ -12,6 +12,10 @@
         @apply text-xl font-bold px-3 pt-1 pb-3;
     }
 
+    .page-container {
+        @apply bg-white dark:bg-gray-900 overflow-hidden shadow-xl sm:rounded-lg p-3;
+    }
+
     /** Button settings */
     .btn-view, .btn-edit, .btn-delete {
         @apply flex justify-center items-center text-sm border ml-1 px-3 py-1 rounded capitalize bg-white;
