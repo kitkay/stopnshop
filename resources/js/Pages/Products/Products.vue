@@ -2,15 +2,11 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import ProductCard from "@/Pages/Products/ProductCard.vue";
 
-</script>
-<script>
-export default {
-    data() {
-        return {
-            products: this.$page.props.products,
-        }
+defineProps({
+    products: {
+        type: Object
     }
-}
+});
 </script>
 
 <template>

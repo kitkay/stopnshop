@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventoryPostRequest;
 use App\Models\Inventory;
 use App\Models\Product;
-use Inertia\Inertia;
 
 class InventoryController extends Controller
 {
@@ -23,13 +22,8 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $products = $this->product::where('deleted_at', null)
-            ->orderBy('unit')
-            ->orderBy('productName', 'ASC')
-            ->get();
-
         $params = [
-            'products' => $products
+            'products' => $this->inventory()
         ];
 
         return checkAuth('Inventory/Inventory', $params);
@@ -37,7 +31,11 @@ class InventoryController extends Controller
 
     public function addInventory()
     {
-        return checkAuth('Inventory/AddInventory', []);
+        $params = [
+            'products' => $this->inventory()
+        ];
+
+        return checkAuth('Inventory/AddInventory', $params);
     }
 
     /**
@@ -53,5 +51,18 @@ class InventoryController extends Controller
             return redirect('inventory')
                 ->with('status', 'New product has been added to our inventory.');
         }
+    }
+
+    /**
+     * Create a list of products just for this page
+     *
+     * @return void
+     */
+    private function inventory()
+    {
+        return $this->product::query()
+            ->orderBy('unit')
+            ->orderBy('productName', 'ASC')
+            ->get();
     }
 }
