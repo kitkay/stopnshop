@@ -19,7 +19,6 @@ class InventoryFactory extends Factory
     {
         return [
             'product_id' => DB::table('products')->inRandomOrder()->value('id'),
-            'price_id' => DB::table('prices')->inRandomOrder()->value('id'),
             'staff_id' => DB::table('users')->inRandomOrder()->value('id'),
             'description' => fake()->sentence(),
         ];

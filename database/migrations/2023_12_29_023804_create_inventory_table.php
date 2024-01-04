@@ -19,11 +19,6 @@ return new class extends Migration
                 'id'
             );
 
-            $table->foreignId('price_id')->constrained(
-                'prices',
-                'id'
-            );
-
             $table->foreignId('staff_id')->constrained(
                 'users',
                 'id'

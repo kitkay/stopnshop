@@ -1,7 +1,7 @@
 <script setup>
 import 'boxicons';
-import { computed, ref } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { computed, reactive } from 'vue';
+import { usePage, router } from '@inertiajs/vue3';
 
 import SelectInput from "@/Components/SelectInput.vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
@@ -18,6 +18,13 @@ defineProps({
 
 const page = usePage();
 const user = computed(() => page.props.auth.user);
+
+const form = reactive({
+    staff_id: null,
+    inventory_name: null,
+    product_id: null,
+
+});
 
 </script>
 
@@ -68,17 +75,6 @@ const user = computed(() => page.props.auth.user);
                                     :selects="products"
                                     @input="onChanged"
                                     />
-                            </div>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="price">
-                                    Price
-                                </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight"
-                                    id="price"
-                                    type="text"
-                                    placeholder="Price of product"
-                                />
                             </div>
                             <div class="mb-6">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
