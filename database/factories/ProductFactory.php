@@ -20,6 +20,7 @@ class ProductFactory extends Factory
         return [
             'category_id' => DB::table('categories')->inRandomOrder()->value('id'),
             'staff_id' => DB::table('users')->inRandomOrder()->value('id'),
+            'price_id' => DB::table('prices')->inRandomOrder()->value('id'),
             'sku' => fake()->regexify('[A-Z]{3}[0-4]{2}'),
             'productName' => fake()->word(),
             'description' => fake()->sentence(),
