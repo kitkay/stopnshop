@@ -1,6 +1,6 @@
 <script setup>
   defineProps({
-    selects: {
+    productSelect: {
         type: Object,
         required: true
     }
@@ -10,6 +10,6 @@
 
 <template>
     <select name='product-name'>
-        <option v-for="select in selects" :key="select.id" :value="select.id">{{ select.productName }}</option>
+        <option v-for="select in productSelect" :key="select.id" :value="select.id">{{ select.productName }}</option>
     </select>
 </template>

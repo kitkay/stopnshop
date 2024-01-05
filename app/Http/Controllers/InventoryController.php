@@ -34,7 +34,8 @@ class InventoryController extends Controller
     public function addInventory()
     {
         $params = [
-            'inventories' => $this->inventories()
+            'inventories' => $this->inventories(),
+            'products' => $this->products()
         ];
 
         return checkAuth('Inventory/CreateInventory', $params);
@@ -47,7 +48,7 @@ class InventoryController extends Controller
      */
     public function store(InventoryPostRequest $request)
     {
-        if ($request->isMethod('post') === $request->method() && $request->valiadted()) {
+        if ($request->isMethod('post') === $request->method() && $request->validated()) {
             Inventory::create($request->validated());
 
             return redirect('inventory')
@@ -76,6 +77,7 @@ class InventoryController extends Controller
     private function inventories()
     {
         return $this->inventory::query()
+            ->with('staff')
             ->get();
     }
 }

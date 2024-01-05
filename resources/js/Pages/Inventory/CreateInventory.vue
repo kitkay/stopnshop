@@ -76,7 +76,7 @@ const form = reactive({
                                 <SelectInput
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     id="product"
-                                    :selects="products"
+                                    :productSelect="products"
                                     />
                             </div>
                             <div class="mb-6">
@@ -103,8 +103,11 @@ const form = reactive({
                 </div>
                 <div class="inventory-table">
                     <span v-if="inventories.length > 0">
-                        <span v-for="inventory in inventories" :key="inventory.id" class="flex">
-                            <div class="mr-3">{{ inventory.product_id }} - {{ inventory.description }}</div>
+                        <span v-for="inventory in inventories" :key="inventory.id">
+                            <div class="bg-green-600 text-green-100 mt-1 mr-1 p-3 rounded flex flex-col">
+                                <span class="mr-3 font-extrabold">{{ inventory.id }} - {{ inventory.name }} - {{ inventory.staff.name }}</span>
+                                <span>{{ inventory.description }}</span>
+                            </div>
                         </span>
                     </span>
                     <span v-else>
@@ -112,7 +115,14 @@ const form = reactive({
                     </span>
                 </div>
                 <div class="inventory-card">
-                    c
+                    <span v-if="inventories.length > 0">
+                        <span>
+                            Total inventories made - {{ inventories.length }}
+                        </span>
+                    </span>
+                    <span v-else>
+                        No Inventories yet
+                    </span>
                 </div>
             </div>
         </div>
