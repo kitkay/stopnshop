@@ -10,6 +10,9 @@ defineProps({
     products: {
         type: Object
     },
+    inventories: {
+        type: Object
+    },
     nameInput: {
         type: String
     },
@@ -68,12 +71,12 @@ const form = reactive({
                             </div>
                             <div class="mb-6">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="product">
-                                    Product {{ checkeds }}
+                                    Product
                                 </label>
                                 <SelectInput
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="product"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="product"
                                     :selects="products"
-                                    @input="onChanged"
                                     />
                             </div>
                             <div class="mb-6">
@@ -99,7 +102,14 @@ const form = reactive({
 
                 </div>
                 <div class="inventory-table">
-                    B
+                    <span v-if="inventories.length > 0">
+                        <span v-for="inventory in inventories" :key="inventory.id" class="flex">
+                            <div class="mr-3">{{ inventory.product_id }} - {{ inventory.description }}</div>
+                        </span>
+                    </span>
+                    <span v-else>
+                        No Inventories yet
+                    </span>
                 </div>
                 <div class="inventory-card">
                     c

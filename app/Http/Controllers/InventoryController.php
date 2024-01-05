@@ -11,8 +11,10 @@ class InventoryController extends Controller
     /**
      * Inventory Controller creation
      */
-    public function __construct(public Product $product)
-    {
+    public function __construct(
+        public Product $product,
+        public Inventory $inventory
+    ) {
     }
 
     /**
@@ -23,7 +25,7 @@ class InventoryController extends Controller
     public function index()
     {
         $params = [
-            'products' => $this->inventory()
+            'products' => $this->products()
         ];
 
         return checkAuth('Inventory/Inventory', $params);
@@ -32,10 +34,10 @@ class InventoryController extends Controller
     public function addInventory()
     {
         $params = [
-            'products' => $this->inventory()
+            'inventories' => $this->inventories()
         ];
 
-        return checkAuth('Inventory/AddInventory', $params);
+        return checkAuth('Inventory/CreateInventory', $params);
     }
 
     /**
@@ -58,11 +60,22 @@ class InventoryController extends Controller
      *
      * @return void
      */
-    private function inventory()
+    private function products()
     {
         return $this->product::query()
             ->orderBy('unit')
             ->orderBy('productName', 'ASC')
+            ->get();
+    }
+
+    /**
+     * Create a list of inventories just for this page
+     *
+     * @return void
+     */
+    private function inventories()
+    {
+        return $this->inventory::query()
             ->get();
     }
 }

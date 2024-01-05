@@ -26,7 +26,7 @@ return new class extends Migration
                 'id'
             );
             $table->string('sku', 15);
-            $table->string('productName', 15);
+            $table->string('productName', 15)->unique();
             $table->text('description');
             $table->string('unit', 10);
             $table->integer('quantity');

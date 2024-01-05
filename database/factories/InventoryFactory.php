@@ -18,6 +18,7 @@ class InventoryFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' => fake()->unique()->regexify('[A-Z]{3}[0-4]{1}[A-Z]{1}'),
             'product_id' => DB::table('products')->inRandomOrder()->value('id'),
             'staff_id' => DB::table('users')->inRandomOrder()->value('id'),
             'description' => fake()->sentence(),

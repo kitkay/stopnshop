@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'staff_id' => DB::table('users')->inRandomOrder()->value('id'),
             'price_id' => DB::table('prices')->inRandomOrder()->value('id'),
             'sku' => fake()->regexify('[A-Z]{3}[0-4]{2}'),
-            'productName' => fake()->word(),
+            'productName' => fake()->unique()->word(),
             'description' => fake()->sentence(),
             'unit' => fake()->randomElement(['pc', 'box']),
             'quantity' => fake()->randomDigit()
