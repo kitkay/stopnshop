@@ -8,7 +8,7 @@ import { Link } from '@inertiajs/vue3';
 
         <span></span>
 
-        <Link :href="route('add-inventory')" class="btn-view">
+        <Link :href="route('inventory.add')" class="btn-view">
             <box-icon
                 type = 'regular'
                 name = 'plus'

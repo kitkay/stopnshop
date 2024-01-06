@@ -22,8 +22,8 @@ class InventoryPostRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => 'required|min:5|max:15',
             'product_id' => 'required|exists:App\Models\Product,id',
-            'price_id' => 'required|exists:App\Models\Price,id',
             'staff_id' => 'required|exists:App\Models\User,id',
             'description' => 'required|max:200',
         ];

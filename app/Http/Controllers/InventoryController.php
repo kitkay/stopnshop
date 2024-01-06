@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventoryPostRequest;
 use App\Models\Inventory;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
@@ -44,16 +45,23 @@ class InventoryController extends Controller
     /**
      * Save new product on our inventory database.
      *
-     * @param InventoryRequest $request
+     * @param InventoryPostRequest $request
      */
     public function store(InventoryPostRequest $request)
     {
-        if ($request->isMethod('post') === $request->method() && $request->validated()) {
+        if ($request->isMethod('post') && $request->validated()) {
             Inventory::create($request->validated());
 
-            return redirect('inventory')
-                ->with('status', 'New product has been added to our inventory.');
+            return redirect()->route('inventory.add')
+                ->with('message', 'New inventory has been created.');
+        } else {
+            return redirect()->route('inventory.index');
         }
+        // dd('hi');
+        // Inventory::create($request->validated());
+
+        // return redirect('inventory.add')
+        // ->with('message', 'New inventory has been created.');
     }
 
     /**

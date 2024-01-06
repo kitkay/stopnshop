@@ -3,13 +3,15 @@
     productSelect: {
         type: Object,
         required: true
-    }
+    },
+    selectModel: String
   });
 
+  defineEmits(['update:selectModel']);
 </script>
 
 <template>
-    <select name='product-name'>
+    <select :value="selectModel" @input="$emit('update:selectModel', $event.target.value)">
         <option v-for="select in productSelect" :key="select.id" :value="select.id">{{ select.productName }}</option>
     </select>
 </template>

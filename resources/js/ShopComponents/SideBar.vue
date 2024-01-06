@@ -32,7 +32,7 @@ import { Link } from '@inertiajs/vue3';
                         </li>
 
                         <li class="rounded-sm">
-                            <Link :href="route('inventory')" class="flex items-center p-2 space-x-3 rounded-md">
+                            <Link :href="route('inventory.index')" class="flex items-center p-2 space-x-3 rounded-md">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
