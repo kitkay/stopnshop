@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\InventoryPostRequest;
 use App\Models\Inventory;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
@@ -28,6 +27,7 @@ class InventoryController extends Controller
         $params = [
             'products' => $this->products()
         ];
+        // dd($params);
 
         return checkAuth('Inventory/Inventory', $params);
     }
@@ -38,6 +38,7 @@ class InventoryController extends Controller
             'inventories' => $this->inventories(),
             'products' => $this->products()
         ];
+        $prods = $this->products();
 
         return checkAuth('Inventory/CreateInventory', $params);
     }
@@ -54,14 +55,8 @@ class InventoryController extends Controller
 
             return redirect()->route('inventory.add')
                 ->with('message', 'New inventory has been created.');
-        } else {
-            return redirect()->route('inventory.index');
         }
-        // dd('hi');
-        // Inventory::create($request->validated());
-
-        // return redirect('inventory.add')
-        // ->with('message', 'New inventory has been created.');
+        return redirect()->route('inventory.index');
     }
 
     /**
@@ -71,10 +66,17 @@ class InventoryController extends Controller
      */
     private function products()
     {
-        return $this->product::query()
-            ->orderBy('unit')
+        return collect($this->product::orderBy('unit')
             ->orderBy('productName', 'ASC')
-            ->get();
+            ->cursorPaginate(5)
+            ->through(function ($item) {
+                return [
+                    'productName' => $item->productName,
+                    'sku' => $item->sku,
+                    'unit' => $item->unit,
+                    'description' => $item->description,
+                ];
+            }));
     }
 
     /**
@@ -84,8 +86,15 @@ class InventoryController extends Controller
      */
     private function inventories()
     {
-        return $this->inventory::query()
-            ->with('staff')
-            ->get();
+        return collect($this->inventory::with('staff')
+            ->cursorPaginate(5)
+            ->through(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'description' => $item->description,
+                    'staff' => $item->staff->name,
+                ];
+            }));
     }
 }

@@ -12,6 +12,6 @@
 
 <template>
     <select :value="selectModel" @input="$emit('update:selectModel', $event.target.value)">
-        <option v-for="select in productSelect" :key="select.id" :value="select.id">{{ select.productName }}</option>
+        <option v-for="select in productSelect.data" :key="select.id" :value="select.id">{{ select.productName }}</option>
     </select>
 </template>

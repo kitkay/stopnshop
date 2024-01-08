@@ -45,76 +45,71 @@ const form = useForm({
             <div class="inventory-create-container">
                 <div class="inventory-create">
 
-                        <form class="bg-white shadow-lg rounded p-3" @submit.prevent="form.post(route('inventory.store'))">
-                            <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                                    Inventory Name
-                                </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="staff"
-                                    type="hidden"
-                                    v-model="form.staff_id"/>
-                                <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="name"
-                                    type="text"
-                                    placeholder="Inventory Name or Code"
-                                    v-model="form.name" />
-                                <div v-if="errors.name">{{ errors.name }}</div>
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="product">
-                                    Product
-                                </label>
-                                <SelectInput
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="products"
-                                    :productSelect="products"
-                                    v-model:selectModel="form.product_id"
-                                    />
+                    <form class="bg-white shadow-lg rounded p-3" @submit.prevent="form.post(route('inventory.store'))">
 
-                                <!-- <select
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    name='product_id'
-                                    v-model='form.product_id'>
-                                    <option v-for="select in products" :key="select.id" :value="select.id">{{ select.productName }}</option>
-                                </select> -->
-                                <div v-if="errors.products">{{ errors.products }}</div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                                Inventory Name
+                            </label>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="staff"
+                                type="hidden"
+                                v-model="form.staff_id"/>
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="name"
+                                type="text"
+                                placeholder="Inventory Name or Code"
+                                v-model="form.name" />
+                            <div v-if="errors.name">{{ errors.name }}</div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="product">
+                                Product
+                            </label>
+                            <SelectInput
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="products"
+                                :productSelect="products"
+                                v-model:selectModel="form.product_id"
+                                />
+
+                            <div v-if="errors.products">{{ errors.products }}</div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                                Description
+                            </label>
+                            <textarea
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="description"
+                                v-model="form.description">
+                            </textarea>
+                            <div v-if="errors.description">{{ errors.description }}</div>
                             </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
-                                    Description
-                                </label>
-                                <textarea
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="description"
-                                    v-model="form.description">
-                                </textarea>
-                                <div v-if="errors.description">{{ errors.description }}</div>
-                            </div>
-                            <div class="flex justify-end">
-                                <button
-                                    class="flex flex-row rounded outline outline-green-800 outline-1 focus:shadow-outline py-1 px-3"
-                                    :disabled="form.processing"
-                                    type="submit"
-                                    >
-                                    <box-icon
-                                        type = 'regular'
-                                        name = 'save'
-                                        size = 'sm'
-                                        color = 'green'
-                                        animation= 'tada-hover'
-                                    ></box-icon>
-                                    <span class="mx-1">Save</span>
-                                </button>
-                            </div>
-                        </form>
-                        <div v-if="form.isDirty">There are unsaved form changes.</div>
+                        <div class="flex justify-end">
+                            <button
+                                class="flex flex-row rounded outline outline-green-800 outline-1 focus:shadow-outline py-1 px-3"
+                                :disabled="form.processing"
+                                type="submit"
+                                >
+                                <box-icon
+                                    type = 'regular'
+                                    name = 'save'
+                                    size = 'sm'
+                                    color = 'green'
+                                    animation= 'tada-hover'
+                                ></box-icon>
+                                <span class="mx-1">Save</span>
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
                 <div class="inventory-table">
-                    <div v-if="inventories.length > 0">
-                        <span v-for="inventory in inventories" :key="inventory.id">
+                    <div v-if="inventories.data.length > 0">
+                        <span v-for="inventory in inventories.data" :key="inventory.id">
                             <div class="mt-1 p-1 flex flex-col">
                                 <span class="text-sm">
                                     <span class="font-extrabold">{{ inventory.name }} - </span>
@@ -131,9 +126,9 @@ const form = useForm({
                     </span>
                 </div>
                 <div class="inventory-card">
-                    <span v-if="inventories.length > 0">
+                    <span v-if="inventories.data.length > 0">
                         <span>
-                            Total inventories made - {{ inventories.length }}
+                            Total inventories made - {{ inventories.data.length }}
                         </span>
                     </span>
                     <span v-else>

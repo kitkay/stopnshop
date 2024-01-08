@@ -24,7 +24,7 @@ defineProps({
         <div class="page-container">
 
             <div class="flex items-center">
-                <span class="contentTitle">Inventory</span>
+                <span class="contentTitle">Inventory {{ products.data.map(item => item.sku) }}</span>
             </div>
 
             <InventoryMenu />
@@ -38,7 +38,7 @@ defineProps({
                     <span class="col-header-full">Description</span>
                     <span class="col-header-actions"></span>
                 </span>
-                <span v-for="product in products" :key="product.id" class="row-content-container">
+                <span v-for="product in products.data" :key="product.id" class="row-content-container">
                     <span class="col-checkbox"><input type="checkbox" /></span>
                     <span class="col-content-small">{{ product.productName }}</span>
                     <span class="col-content-small">{{ product.sku }}</span>
